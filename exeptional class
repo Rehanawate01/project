@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Exception {
+
+public:
+   Exception(const string& msg) : msg_(msg) {}
+  ~Exception() {}
+
+   string getMessage() const {return(msg_);}
+private:
+   string msg_;
+};
+
+void f() {
+   throw(Exception("Mr. Sulu"));
+}
+
+int main() {
+
+   try {
+      f();
+   }
+   catch(Exception& e) {
+      cout << "You threw an exception: " << e.getMessage() << endl;
+   }
+}
+=====================================================================================
+class error
+{
+    int x;
+    int y; 
+public:
+    error() { }
+
+    error(int a,int b)
+    {
+        x=a;
+        y=b;
+    }
+
+    void display()
+    {
+        cout<<x<<endl<<y;
+    }
+};
+
+main()
+{
+    error e;
+    try{
+        cout<<"press any key to test exception\n";
+        getch();
+        throw error(99,22);
+    }
+    catch(error e)
+    {
+        cout<<"\nexception caught successfully\n";
+        e.display();
+    }
+}
